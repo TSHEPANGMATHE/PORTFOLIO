@@ -16,17 +16,23 @@
     });
   }
 
-  // The image files are stored in the repository root. Keep the existing
-  // markup working by correcting the old assets/images/ paths at runtime.
-  document.querySelectorAll('img[src^="assets/images/"]').forEach((image) => {
-    const filename = image.getAttribute('src').split('/').pop();
-    image.src = `./${filename}`;
+  // The PNG files are stored in the repository root, not assets/images.
+  document.querySelectorAll('img').forEach((image) => {
+    const source = image.getAttribute('src') || '';
+    const filename = source.split('/').pop();
+
+    if (filename === 'tut-logo.png' || filename === 'ccna-certificate.png') {
+      const localPath = `./${filename}`;
+      const rawPath = `https://raw.githubusercontent.com/TSHEPANGMATHE/PORTFOLIO/main/${filename}`;
+
+      image.onerror = () => {
+        if (image.src !== rawPath) image.src = rawPath;
+      };
+      image.src = localPath;
+    }
   });
 
   const revealElements = document.querySelectorAll('.rv');
-
-  // Reveal content immediately so it cannot remain hidden when animation APIs
-  // are unavailable or blocked by the hosting environment.
   revealElements.forEach((element) => element.classList.add('in'));
 
   if (!('IntersectionObserver' in window)) return;
