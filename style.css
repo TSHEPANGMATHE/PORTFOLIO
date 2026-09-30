@@ -85,6 +85,35 @@ h1 .accent{color:var(--accent);}
 .tags span{font-size:12px;border:1px solid var(--border);padding:4px 12px;border-radius:100px;color:var(--muted);}
 .project-links{display:flex;gap:12px;flex-wrap:wrap;}
 
+/* Center Nexus School Management System */
+.project-card.nexus-project {
+  text-align: center;
+}
+
+.project-card.nexus-project p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-card.nexus-project .row,
+.project-card.nexus-project .tags,
+.project-card.nexus-project .project-links {
+  justify-content: center;
+}
+
+.project-card.nexus-project .row {
+  text-align: left;
+}
+
+.project-card.nexus-project .tags {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-card.nexus-project .project-links {
+  margin-top: 4px;
+}
+
 /* education / journey */
 .edu-card{border:1px solid var(--border);border-radius:10px;padding:26px;background:var(--surface);margin-bottom:16px;}
 .edu-card h3{font-size:18px;margin-bottom:4px;}
